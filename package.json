@@ -7,17 +7,31 @@
     "dev": "vp dev",
     "build": "tsc -b && vp build",
     "lint": "vp lint .",
-    "preview": "vp preview"
+    "preview": "vp preview",
+    "mock": "npx tsx server/mockVitals.ts"
   },
   "dependencies": {
+    "@tanstack/react-router": "^1.169.2",
+    "@tanstack/react-router-devtools": "^1.166.13",
+    "@tanstack/router-vite-plugin": "^1.166.49",
+    "immer": "^11.1.6",
     "react": "^19.2.5",
-    "react-dom": "^19.2.5"
+    "react-dom": "^19.2.5",
+    "recharts": "^3.8.1",
+    "ws": "^8.20.0",
+    "zustand": "^5.0.13"
   },
   "devDependencies": {
+    "@tanstack/router-plugin": "^1.167.34",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
     "@types/node": "^24.12.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
+    "@types/ws": "^8.18.1",
     "@vitejs/plugin-react": "^6.0.1",
+    "jsdom": "^29.1.1",
+    "tsx": "^4.21.0",
     "typescript": "~6.0.2",
     "vite": "catalog:",
     "vite-plus": "catalog:"
