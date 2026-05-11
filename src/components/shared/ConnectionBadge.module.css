@@ -1,0 +1,36 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid currentcolor;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentcolor;
+  flex-shrink: 0;
+}
+
+.live {
+  color: var(--color-status-live);
+}
+
+.stale {
+  color: var(--color-status-stale);
+}
+
+.reconnecting {
+  color: var(--color-status-reconnecting);
+}
+
+.disconnected {
+  color: var(--color-status-disconnected);
+}

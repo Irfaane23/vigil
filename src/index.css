@@ -10,6 +10,30 @@
   --social-bg: rgba(244, 243, 236, 0.5);
   --shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
+  /* -- Clinical design tokens ---------------------------------------------- */
+  --color-surface: #ffffff;
+  --color-surface-active: #f0f0f8;
+  --color-border: #e0dfe3;
+  --color-focus: #6366f1;
+  --color-text-primary: #08060d;
+  --color-text-muted: #6b6375;
+
+  /* Alarm tiers */
+  --color-alarm-advisory: #d97706;
+  --color-alarm-advisory-tint: #fffbeb;
+  --color-alarm-urgent: #ea580c;
+  --color-alarm-urgent-tint: #fff7ed;
+  --color-alarm-emergency: #dc2626;
+  --color-alarm-emergency-tint: #fef2f2;
+  --color-alarm-emergency-bright: #ef4444;
+  --color-alarm-emergency-flash: #fee2e2;
+
+  /* Connection status */
+  --color-status-live: #16a34a;
+  --color-status-stale: #d97706;
+  --color-status-reconnecting: #ca8a04;
+  --color-status-disconnected: #dc2626;
+
   --sans: system-ui, "Segoe UI", Roboto, sans-serif;
   --heading: system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
@@ -41,6 +65,21 @@
     --accent-border: rgba(192, 132, 252, 0.5);
     --social-bg: rgba(47, 48, 58, 0.5);
     --shadow: rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+
+    /* Clinical tokens - dark mode */
+    --color-surface: #1e1f2a;
+    --color-surface-active: #2a2b38;
+    --color-border: #3a3b48;
+    --color-text-primary: #f3f4f6;
+    --color-text-muted: #9ca3af;
+    --color-alarm-advisory: #f59e0b;
+    --color-alarm-advisory-tint: rgba(245, 158, 11, 0.12);
+    --color-alarm-urgent: #f97316;
+    --color-alarm-urgent-tint: rgba(249, 115, 22, 0.12);
+    --color-alarm-emergency: #ef4444;
+    --color-alarm-emergency-tint: rgba(239, 68, 68, 0.12);
+    --color-alarm-emergency-bright: #f87171;
+    --color-alarm-emergency-flash: rgba(239, 68, 68, 0.25);
   }
 
   #social .button-icon {
@@ -49,11 +88,7 @@
 }
 
 #root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
+  width: 100%;
   min-height: 100svh;
   display: flex;
   flex-direction: column;

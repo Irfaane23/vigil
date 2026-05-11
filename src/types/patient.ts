@@ -5,6 +5,8 @@ export interface Patient {
   readonly name: string;
   readonly bedNumber: string;
   readonly admittedAt: string;
+  readonly age?: number;
+  readonly mrn?: string;
 }
 
 export interface PatientSession {

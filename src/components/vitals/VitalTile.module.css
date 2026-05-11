@@ -1,0 +1,136 @@
+.tile {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 44px;
+  padding: 10px 12px;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.tile:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.tile.active {
+  border-color: var(--color-focus);
+  background: var(--color-surface-active);
+}
+
+.label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.valueRow {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  color: var(--color-text-primary);
+}
+
+.unit {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.calcBadge {
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  padding: 1px 3px;
+  margin-left: 2px;
+}
+
+.readingArea {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sparkline {
+  display: block;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+.compact .value {
+  font-size: 1.25rem;
+}
+
+.compact .label {
+  font-size: 0.65rem;
+}
+
+/* -- Alarm tiers ---------------------------------------------------- */
+
+.advisory {
+  border-color: var(--color-alarm-advisory);
+  background: var(--color-alarm-advisory-tint);
+}
+
+.urgent {
+  border-color: var(--color-alarm-urgent);
+  background: var(--color-alarm-urgent-tint);
+}
+
+.emergency {
+  border-color: var(--color-alarm-emergency);
+  background: var(--color-alarm-emergency-tint);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes pulse-urgent {
+    0%,
+    100% {
+      border-color: var(--color-alarm-urgent);
+    }
+
+    50% {
+      border-color: transparent;
+    }
+  }
+
+  @keyframes flash-emergency {
+    0%,
+    100% {
+      border-color: var(--color-alarm-emergency);
+      background: var(--color-alarm-emergency-tint);
+    }
+
+    50% {
+      border-color: var(--color-alarm-emergency-bright);
+      background: var(--color-alarm-emergency-flash);
+    }
+  }
+
+  .urgent {
+    animation: pulse-urgent 1s step-start infinite;
+  }
+
+  .emergency {
+    animation: flash-emergency 0.5s step-start infinite;
+  }
+}
