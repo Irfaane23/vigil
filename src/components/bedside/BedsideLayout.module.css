@@ -1,0 +1,17 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  background: var(--bg);
+}
+
+.domains {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.notFound {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--color-text-muted);
+}

@@ -1,4 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { BedsideLayout } from "@/components/bedside/BedsideLayout";
+import { WS_URL } from "@/config";
+import { useVitalsStream } from "@/hooks/useVitalsStream";
 
 export const Route = createFileRoute("/bedside/$patientId")({
   component: BedsideRoute,
@@ -6,5 +9,6 @@ export const Route = createFileRoute("/bedside/$patientId")({
 
 function BedsideRoute() {
   const { patientId } = Route.useParams();
-  return <main>vigil — bedside for {patientId} (scaffold)</main>;
+  useVitalsStream(WS_URL);
+  return <BedsideLayout patientId={patientId} />;
 }
