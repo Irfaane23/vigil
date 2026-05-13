@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { AlarmBanner } from "@/components/alarms/AlarmBanner";
 import { usePatientVitals } from "@/hooks/usePatientVitals";
 import { DomainGroup } from "./DomainGroup";
 import { PatientHeader } from "./PatientHeader";
@@ -41,7 +42,7 @@ export function BedsideLayout({ patientId }: BedsideLayoutProps) {
   return (
     <main className={styles.layout}>
       <PatientHeader patient={patient} connectionStatus={connectionStatus} />
-      {/* AlarmBanner — wired in VIGIL-008 */}
+      <AlarmBanner patientId={patientId} />
       <div className={styles.domains}>
         {DOMAIN_ORDER.map(({ label, codes }) => (
           <DomainGroup
