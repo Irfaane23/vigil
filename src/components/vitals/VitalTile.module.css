@@ -23,6 +23,22 @@
 .tile.active {
   border-color: var(--color-focus);
   background: var(--color-surface-active);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.tile.active.advisory {
+  border-color: var(--color-alarm-advisory);
+}
+
+.tile.active.urgent {
+  border-color: var(--color-alarm-urgent);
+}
+
+.tile.active.emergency {
+  border-color: var(--color-alarm-emergency);
 }
 
 .label {

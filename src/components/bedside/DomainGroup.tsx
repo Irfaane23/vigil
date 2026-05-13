@@ -1,4 +1,5 @@
 import type { PatientVitalsMap } from "@/hooks/usePatientVitals";
+import { TrendPanel } from "@/components/trend/TrendPanel";
 import { VitalTile } from "@/components/vitals/VitalTile";
 import type { VitalCode } from "@/types/vitals";
 import styles from "./DomainGroup.module.css";
@@ -7,11 +8,21 @@ interface DomainGroupProps {
   label: string;
   codes: VitalCode[];
   vitals: PatientVitalsMap;
+  patientId: string;
   activeTile: VitalCode | null;
   onTileClick: (code: VitalCode) => void;
+  onPanelClose: () => void;
 }
 
-export function DomainGroup({ label, codes, vitals, activeTile, onTileClick }: DomainGroupProps) {
+export function DomainGroup({
+  label,
+  codes,
+  vitals,
+  patientId,
+  activeTile,
+  onTileClick,
+  onPanelClose,
+}: DomainGroupProps) {
   const panelCode = codes.find((c) => c === activeTile) ?? null;
 
   return (
@@ -36,9 +47,12 @@ export function DomainGroup({ label, codes, vitals, activeTile, onTileClick }: D
         })}
       </div>
       {panelCode !== null && (
-        <div className={styles.panelSlot} role="region" aria-label={`Trend panel for ${panelCode}`}>
-          {/* TrendPanel — wired in VIGIL-009 */}
-        </div>
+        <TrendPanel
+          patientId={patientId}
+          code={panelCode}
+          alarmTier={vitals[panelCode].alarmTier}
+          onClose={onPanelClose}
+        />
       )}
     </section>
   );

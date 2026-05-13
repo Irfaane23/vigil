@@ -31,6 +31,10 @@ export function BedsideLayout({ patientId }: BedsideLayoutProps) {
     setActiveTile((prev) => (prev === code ? null : code));
   }
 
+  function handlePanelClose() {
+    setActiveTile(null);
+  }
+
   if (patient === undefined) {
     return (
       <main className={styles.layout}>
@@ -50,8 +54,10 @@ export function BedsideLayout({ patientId }: BedsideLayoutProps) {
             label={label}
             codes={codes}
             vitals={vitals}
+            patientId={patientId}
             activeTile={activeTile}
             onTileClick={handleTileClick}
+            onPanelClose={handlePanelClose}
           />
         ))}
       </div>

@@ -40,7 +40,7 @@ export function VitalTile({
 }: VitalTileProps) {
   const label = VITAL_LABEL[code];
   const unit = getUnit(code);
-  const displayValue = reading !== undefined ? formatValue(code, reading.value) : "—";
+  const displayValue = reading !== undefined ? formatValue(code, reading.value) : "-";
 
   const tileClass = [
     styles.tile,

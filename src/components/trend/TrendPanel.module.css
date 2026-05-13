@@ -1,0 +1,138 @@
+.panel {
+  margin-top: -2px;
+  border: 2px solid var(--color-border);
+  border-radius: 0 6px 6px 6px;
+  background: var(--color-surface);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transform-origin: top;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes panelOpen {
+    from {
+      transform: scaleY(0);
+      opacity: 0;
+    }
+    to {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+  }
+
+  .panel {
+    animation: panelOpen 0.18s ease-out;
+  }
+}
+
+.panel.advisory {
+  border-color: var(--color-alarm-advisory);
+}
+
+.panel.urgent {
+  border-color: var(--color-alarm-urgent);
+}
+
+.panel.emergency {
+  border-color: var(--color-alarm-emergency);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.subtitle {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-left: 8px;
+  font-weight: 400;
+}
+
+.closeBtn {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeBtn:hover {
+  background: var(--color-surface-active);
+}
+
+.closeBtn:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.zoomBtn {
+  min-height: 36px;
+  padding: 6px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.zoomBtn:hover:not(:disabled) {
+  background: var(--color-surface-active);
+}
+
+.zoomBtn:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.zoomBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.zoomState {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+}
+
+.zoomState.zoomed {
+  color: var(--color-focus);
+  font-weight: 500;
+}
