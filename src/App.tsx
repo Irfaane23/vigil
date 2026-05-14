@@ -1,19 +1,14 @@
-import { useEffect } from "react";
-import "./App.css";
+import { createRouter, RouterProvider } from "@tanstack/react-router";
+import { routeTree } from "./routeTree.gen";
+
+const router = createRouter({ routeTree });
+
+declare module "@tanstack/react-router" {
+    interface Register {
+        router: typeof router;
+    }
+}
 
 export default function App() {
-    useEffect(() => {
-        const ws = new WebSocket("ws://localhost:8080");
-
-        ws.onmessage = (event) => {
-            const data = JSON.parse(event.data);
-            console.log(data);
-        };
-
-        return () => {
-            ws.close();
-        };
-    }, []);
-
-    return <div>Vitals streaming...</div>;
+    return <RouterProvider router={router} />;
 }
