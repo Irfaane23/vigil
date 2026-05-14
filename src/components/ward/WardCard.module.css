@@ -1,0 +1,147 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+  min-width: 320px;
+  min-height: 280px;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.card:hover {
+  transform: translateY(-1px);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.card.advisory {
+  border-color: var(--color-alarm-advisory);
+  background: var(--color-alarm-advisory-tint);
+}
+
+.card.urgent {
+  border-color: var(--color-alarm-urgent);
+  background: var(--color-alarm-urgent-tint);
+}
+
+.card.emergency {
+  border-color: var(--color-alarm-emergency);
+  background: var(--color-alarm-emergency-tint);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes ward-pulse-urgent {
+    0%,
+    100% {
+      border-color: var(--color-alarm-urgent);
+    }
+
+    50% {
+      border-color: transparent;
+    }
+  }
+
+  @keyframes ward-flash-emergency {
+    0%,
+    100% {
+      border-color: var(--color-alarm-emergency);
+      background: var(--color-alarm-emergency-tint);
+    }
+
+    50% {
+      border-color: var(--color-alarm-emergency-bright);
+      background: var(--color-alarm-emergency-flash);
+    }
+  }
+
+  .card.urgent {
+    animation: ward-pulse-urgent 1s step-start infinite;
+  }
+
+  .card.emergency {
+    animation: ward-flash-emergency 0.5s step-start infinite;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.identity {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.alarmBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: #ffffff;
+  background: var(--color-alarm-advisory);
+  letter-spacing: 0.04em;
+}
+
+.alarmBadge.urgent {
+  background: var(--color-alarm-urgent);
+}
+
+.alarmBadge.emergency {
+  background: var(--color-alarm-emergency);
+}
+
+.bed {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+
+.name {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(2, auto);
+  gap: 6px;
+}
+
+@media (max-width: 540px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(4, auto);
+  }
+}
