@@ -9,6 +9,16 @@ import type { VitalReading } from "@/types/vitals";
 import { evaluateThreshold } from "@/utils/thresholds";
 import { isStale } from "@/utils/vitalMath";
 
+/**
+ * Single connection, multi-patient ingestion.
+ *
+ * One WebSocket carries observations for every patient on the ward.
+ * `handleMessage` extracts `patientId` from the FHIR `subject.reference`
+ * field on each message and routes to the correct keyed slot in the stores,
+ * so callers do NOT instantiate this hook per patient, mounting it once at
+ * the route level is enough to keep all four mock patients live.
+ */
+
 const MAX_RECONNECT_ATTEMPTS = 5;
 const RECONNECT_BASE_DELAY_MS = 1_000;
 const RECONNECT_MAX_DELAY_MS = 30_000;

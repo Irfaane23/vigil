@@ -2,6 +2,20 @@ import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 import type { Annotation } from "@/types/annotation";
 
+/**
+ * Multi-patient annotation store.
+ *
+ *   annotations[patientId]                        -> Annotation[]
+ *
+ * Each patient's list is persisted to its own localStorage entry
+ * (`vigil_annotations_${patientId}`), so hydration is per-patient and
+ * mutations to one patient's annotations never touch another's storage.
+ *
+ * Annotations are intentionally patient-scoped (not vital-scoped): a single
+ * marker appears across every vital's TrendPanel for that patient, since a
+ * clinical event applies to the whole patient, not one number.
+ */
+
 const storageKey = (patientId: string) => `vigil_annotations_${patientId}`;
 
 type AnnotationState = {

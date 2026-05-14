@@ -4,6 +4,20 @@ import { ConnectionStatus } from "@/types/vitals";
 import type { Patient, PatientSession } from "@/types/patient";
 import type { VitalCode, VitalReading } from "@/types/vitals";
 
+/**
+ * Multi-patient vitals store.
+ *
+ * Both top-level maps are keyed by `patientId`, so any number of concurrent
+ * patient streams can live in a single store instance:
+ *
+ *   patients[patientId]                -> PatientSession (identity + connection)
+ *   readings[patientId][vitalCode]     -> VitalReading[] (ring-buffered)
+ *
+ * All actions accept `patientId` as their first argument. No per-patient
+ * store instances are created; the WardView and BedsideView select against
+ * the same single store.
+ */
+
 const MAX_READINGS = 720;
 
 type VitalsState = {

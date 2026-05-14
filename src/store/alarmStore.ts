@@ -4,6 +4,19 @@ import type { Alarm, AlarmThreshold, SilenceRecord } from "@/types/alarm";
 import type { VitalCode } from "@/types/vitals";
 import { DEFAULT_THRESHOLDS } from "@/utils/thresholds";
 
+/**
+ * Multi-patient alarm store.
+ *
+ *   thresholds[patientId][vitalCode]              -> optional override
+ *                                                   (falls back to DEFAULT_THRESHOLDS)
+ *   activeAlarms[`${patientId}:${vitalCode}`]     -> currently-firing Alarm
+ *   silenceRecords[`${patientId}:${vitalCode}`]   -> SilenceRecord while active
+ *
+ * Composite-key strings keep collisions impossible across patients/vitals.
+ * The same store instance serves the bedside view, ward view, and any
+ * future workflows that surface alarm state.
+ */
+
 type AlarmState = {
   thresholds: Record<string, Partial<Record<VitalCode, AlarmThreshold>>>;
   activeAlarms: Record<string, Alarm>;
